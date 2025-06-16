@@ -61,7 +61,3 @@ plot = [
     "seaborn>=0.13.2",
     "shap>=0.47.1",
 ]
-
-[[tool.uv.index]]
-name = "nx-pypi"
-url = "https://naranja.jfrog.io/artifactory/api/pypi/nx_pip_public/simple"
