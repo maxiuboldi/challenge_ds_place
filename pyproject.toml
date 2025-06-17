@@ -24,4 +24,7 @@ dependencies = [
     "matplotlib>=3.7.5",
     "seaborn>=0.13.2",
     "shap>=0.47.1",
+    "geopandas>=1.0.1",
+    "shapely>=2.0.7",
+    "folium>=0.20.0",
 ]
