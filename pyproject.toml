@@ -1,6 +1,6 @@
 [project]
 name = "challenge-ds-place"
-version = "2.0.0"
+version = "0.0.0"
 description = "Challenge ITTI"
 readme = "README.md"
 requires-python = ">=3.9,<=3.11"
