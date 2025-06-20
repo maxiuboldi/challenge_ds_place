@@ -363,13 +363,23 @@ def plot_ks(
     plt.show()
 
 
-def plot_feature_importance(model, top_n: int = 10, figsize: tuple = (10, 6)):
+def plot_feature_importance(
+        model,
+        top_n: int = 10,
+        figsize: tuple = (10, 6),
+        feature_names: List[str] = None
+    ):
     """
     Plot the top feature importances.
     """
 
     try:
-        if hasattr(model, "feature_names_in_"):
+        if feature_names:
+            feature_importances = pd.Series(
+                model.feature_importances_ / model.feature_importances_.sum(),
+                index=feature_names,
+            )
+        elif hasattr(model, "feature_names_in_"):
             feature_importances = pd.Series(
                 model.feature_importances_ / model.feature_importances_.sum(),
                 index=model.feature_names_in_,
@@ -455,7 +465,11 @@ def plot_calibration_curve(
 
 
 def plot_shap_importance(
-    model, train_data, top_n: int = 10, figsize: tuple = (10, 6)
+    model,
+    train_data,
+    top_n: int = 10,
+    figsize: tuple = (10, 6),
+    feature_names: List[str] = None
 ):
     """
     Plot the top feature importances.
@@ -483,6 +497,7 @@ def plot_shap_importance(
         max_display=top_n,
         plot_size=figsize,
         show=False,
+        feature_names=feature_names if feature_names else None,
     )
     plt.title(f"Importancia SHAP - Top {top_n}", fontsize=16, y=1.05)
     plt.show()
